@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Manage Campaigns | HopeConnect</title>
+
+    <link rel="stylesheet" href="CSS/style.css">
+
+    <style>
+
+        .manage-page {
+            min-height: calc(100vh - 80px);
+
+            padding: 60px 7%;
+
+            background: #f6f1ea;
+        }
+
+
+        .manage-header {
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: flex-end;
+
+            margin-bottom: 45px;
+        }
+
+
+        .manage-header h1 {
+            font-family: "Playfair Display", serif;
+
+            font-size: 52px;
+
+            color: #3b2528;
+
+            line-height: 1;
+
+            margin-bottom: 10px;
+        }
+
+
+        .manage-subtitle {
+            color: #756a65;
+
+            font-size: 14px;
+        }
+
+
+        .back-button {
+            padding: 11px 20px;
+
+            border: 1px solid #5b1824;
+
+            color: #5b1824;
+
+            font-size: 13px;
+
+            font-weight: 700;
+        }
+
+
+        /* ADD CAMPAIGN */
+
+        .add-campaign-box {
+            background: #2d2020;
+
+            color: white;
+
+            padding: 40px;
+
+            margin-bottom: 55px;
+        }
+
+
+        .add-campaign-box h2 {
+            font-family: "Playfair Display", serif;
+
+            font-size: 34px;
+
+            margin-bottom: 25px;
+        }
+
+
+        .campaign-form {
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 18px;
+        }
+
+
+        .campaign-form input,
+        .campaign-form textarea {
+
+            width: 100%;
+
+            padding: 14px;
+
+            border: 1px solid #5c4b4a;
+
+            background: #382b2b;
+
+            color: white;
+
+            font-family: "DM Sans", sans-serif;
+
+            outline: none;
+        }
+
+
+        .campaign-form textarea {
+            min-height: 100px;
+
+            resize: vertical;
+        }
+
+
+        .full-field {
+            grid-column: 1 / -1;
+        }
+
+
+        .campaign-form input:focus,
+        .campaign-form textarea:focus {
+
+            border-color: #d99aa3;
+
+        }
+
+
+        .add-button {
+
+            padding: 14px 25px;
+
+            border: none;
+
+            background: #a51c30;
+
+            color: white;
+
+            font-family: "DM Sans", sans-serif;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition: 0.25s ease;
+        }
+
+
+        .add-button:hover {
+
+            background: #c02b42;
+
+            transform: translateY(-2px);
+
+        }
+
+
+        /* CAMPAIGNS */
+
+        .section-title {
+
+            font-family: "Playfair Display", serif;
+
+            font-size: 40px;
+
+            color: #3b2528;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .campaign-list {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 20px;
+
+        }
+
+
+        .admin-campaign-card {
+
+            background: #f9f5f0;
+
+            border: 1px solid #dfd1c9;
+
+            padding: 30px;
+
+            min-height: 280px;
+
+            display: flex;
+
+            flex-direction: column;
+
+        }
+
+
+        .admin-campaign-card .category {
+
+            font-size: 10px;
+
+            font-weight: 700;
+
+            letter-spacing: 2px;
+
+            color: #a51c30;
+
+            margin-bottom: 18px;
+
+        }
+
+
+        .admin-campaign-card h3 {
+
+            font-family: "Playfair Display", serif;
+
+            font-size: 26px;
+
+            color: #3b2528;
+
+            margin-bottom: 12px;
+
+        }
+
+
+        .admin-campaign-card p {
+
+            color: #756a65;
+
+            font-size: 13px;
+
+            line-height: 1.7;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .campaign-goal {
+
+            font-size: 12px;
+
+            color: #655953;
+
+            margin-top: auto;
+
+        }
+
+
+        .delete-button {
+
+            margin-top: 18px;
+
+            padding: 11px;
+
+            border: 1px solid #a51c30;
+
+            background: transparent;
+
+            color: #a51c30;
+
+            font-family: "DM Sans", sans-serif;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition: 0.25s ease;
+
+        }
+
+
+        .delete-button:hover {
+
+            background: #a51c30;
+
+            color: white;
+
+        }
+
+
+        @media (max-width: 850px) {
+
+            .manage-header {
+
+                flex-direction: column;
+
+                align-items: flex-start;
+
+                gap: 20px;
+
+            }
+
+            .campaign-form {
+
+                grid-template-columns: 1fr;
+
+            }
+
+            .full-field {
+
+                grid-column: auto;
+
+            }
+
+            .campaign-list {
+
+                grid-template-columns: 1fr;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- NAVBAR -->
+
+    <header class="navbar">
+
+        <a href="index.html" class="logo">
+            HopeConnect
+        </a>
+
+        <nav>
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="campaigns.html">
+                Campaigns
+            </a>
+
+            <a href="admin-dashboard.html">
+                Dashboard
+            </a>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- PAGE -->
+
+    <main class="manage-page">
+
+
+        <!-- HEADER -->
+
+        <section class="manage-header">
+
+            <div>
+
+                <div class="section-label">
+                    ADMIN MODULE
+                </div>
+
+                <h1>
+                    Manage campaigns.
+                </h1>
+
+                <p class="manage-subtitle">
+                    Create and manage the causes displayed
+                    on HopeConnect.
+                </p>
+
+            </div>
+
+
+            <a
+                href="admin-dashboard.html"
+                class="back-button"
+            >
+                ← Admin Dashboard
+            </a>
+
+        </section>
+
+
+
+        <!-- ADD CAMPAIGN -->
+
+        <section class="add-campaign-box">
+
+            <h2>
+                Add a new campaign.
+            </h2>
+
+
+            <form
+                class="campaign-form"
+                id="campaignForm"
+            >
+
+
+                <input
+                    type="text"
+                    id="campaignTitle"
+                    placeholder="Campaign title"
+                    required
+                >
+
+
+                <input
+                    type="text"
+                    id="campaignCategory"
+                    placeholder="Category e.g. EDUCATION"
+                    required
+                >
+
+
+                <textarea
+                    id="campaignDescription"
+                    class="full-field"
+                    placeholder="Campaign description"
+                    required
+                ></textarea>
+
+
+                <input
+                    type="number"
+                    id="campaignGoal"
+                    placeholder="Goal amount ₹"
+                    min="1"
+                    required
+                >
+
+
+                <button
+                    type="submit"
+                    class="add-button"
+                >
+                    + Add Campaign
+                </button>
+
+
+            </form>
+
+        </section>
+
+
+
+        <!-- CAMPAIGN LIST -->
+
+        <section>
+
+            <div class="section-label">
+                CURRENT CAMPAIGNS
+            </div>
+
+            <h2 class="section-title">
+                Manage your causes.
+            </h2>
+
+
+            <div
+                class="campaign-list"
+                id="campaignList"
+            ></div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+
+        /* =========================
+           ADMIN CHECK
+        ========================= */
+
+        const currentUser =
+            JSON.parse(
+                localStorage.getItem("currentUser")
+            );
+
+
+        if (
+            !currentUser ||
+            currentUser.role !== "admin"
+        ) {
+
+            alert(
+                "Admin access required."
+            );
+
+            window.location.href =
+                "login.html";
+
+        }
+
+
+
+        /* =========================
+           DEFAULT CAMPAIGNS
+        ========================= */
+
+        let campaigns =
+            JSON.parse(
+                localStorage.getItem(
+                    "campaigns"
+                )
+            );
+
+
+        if (!campaigns) {
+
+            campaigns = [
+
+                {
+                    id: 1,
+
+                    title:
+                        "Education for every child.",
+
+                    category:
+                        "EDUCATION",
+
+                    description:
+                        "Help provide school supplies, learning materials and educational opportunities for children.",
+
+                    goal:
+                        50000
+
+                },
+
+                {
+                    id: 2,
+
+                    title:
+                        "A meal should never be a luxury.",
+
+                    category:
+                        "FOOD",
+
+                    description:
+                        "Support food distribution programs helping families facing difficult circumstances.",
+
+                    goal:
+                        30000
+
+                },
+
+                {
+                    id: 3,
+
+                    title:
+                        "Healthcare when it matters.",
+
+                    category:
+                        "HEALTHCARE",
+
+                    description:
+                        "Help people access essential medical care and support when they need it most.",
+
+                    goal:
+                        100000
+
+                }
+
+            ];
+
+
+            localStorage.setItem(
+                "campaigns",
+                JSON.stringify(
+                    campaigns
+                )
+            );
+
+        }
+
+
+
+        /* =========================
+           DISPLAY CAMPAIGNS
+        ========================= */
+
+        function displayCampaigns() {
+
+            const campaignList =
+                document.getElementById(
+                    "campaignList"
+                );
+
+
+            campaignList.innerHTML = "";
+
+
+            if (
+                campaigns.length === 0
+            ) {
+
+                campaignList.innerHTML = `
+                    <p>
+                        No campaigns available.
+                    </p>
+                `;
+
+                return;
+
+            }
+
+
+            campaigns.forEach(
+                function(campaign) {
+
+                    const card =
+                        document.createElement(
+                            "article"
+                        );
+
+
+                    card.className =
+                        "admin-campaign-card";
+
+
+                    card.innerHTML = `
+
+                        <div class="category">
+                            ${campaign.category}
+                        </div>
+
+                        <h3>
+                            ${campaign.title}
+                        </h3>
+
+                        <p>
+                            ${campaign.description}
+                        </p>
+
+                        <div class="campaign-goal">
+                            Goal: ₹${campaign.goal}
+                        </div>
+
+                        <button
+                            class="delete-button"
+                            onclick="deleteCampaign(${campaign.id})"
+                        >
+                            Delete Campaign
+                        </button>
+
+                    `;
+
+
+                    campaignList.appendChild(
+                        card
+                    );
+
+                }
+            );
+
+        }
+
+
+
+        /* =========================
+           ADD CAMPAIGN
+        ========================= */
+
+        document
+            .getElementById("campaignForm")
+            .addEventListener(
+                "submit",
+                function(event) {
+
+                    event.preventDefault();
+
+
+                    const title =
+                        document
+                            .getElementById(
+                                "campaignTitle"
+                            )
+                            .value
+                            .trim();
+
+
+                    const category =
+                        document
+                            .getElementById(
+                                "campaignCategory"
+                            )
+                            .value
+                            .trim()
+                            .toUpperCase();
+
+
+                    const description =
+                        document
+                            .getElementById(
+                                "campaignDescription"
+                            )
+                            .value
+                            .trim();
+
+
+                    const goal =
+                        Number(
+                            document
+                                .getElementById(
+                                    "campaignGoal"
+                                )
+                                .value
+                        );
+
+
+                    const newCampaign = {
+
+                        id:
+                            Date.now(),
+
+                        title:
+                            title,
+
+                        category:
+                            category,
+
+                        description:
+                            description,
+
+                        goal:
+                            goal
+
+                    };
+
+
+                    campaigns.push(
+                        newCampaign
+                    );
+
+
+                    localStorage.setItem(
+                        "campaigns",
+                        JSON.stringify(
+                            campaigns
+                        )
+                    );
+
+
+                    alert(
+                        "Campaign added successfully!"
+                    );
+
+
+                    document
+                        .getElementById(
+                            "campaignForm"
+                        )
+                        .reset();
+
+
+                    displayCampaigns();
+
+                }
+            );
+
+
+
+        /* =========================
+           DELETE CAMPAIGN
+        ========================= */
+
+        function deleteCampaign(id) {
+
+            const confirmDelete =
+                confirm(
+                    "Are you sure you want to delete this campaign?"
+                );
+
+
+            if (!confirmDelete) {
+
+                return;
+
+            }
+
+
+            campaigns =
+                campaigns.filter(
+                    function(campaign) {
+
+                        return campaign.id !== id;
+
+                    }
+                );
+
+
+            localStorage.setItem(
+                "campaigns",
+                JSON.stringify(
+                    campaigns
+                )
+            );
+
+
+            alert(
+                "Campaign deleted successfully!"
+            );
+
+
+            displayCampaigns();
+
+        }
+
+
+
+        /* =========================
+           INITIAL DISPLAY
+        ========================= */
+
+        displayCampaigns();
+
+
+    </script>
+
+
+
+    <!-- CURSOR -->
+
+    <script src="js/cursor.js"></script>
+
+
+</body>
+
+</html>

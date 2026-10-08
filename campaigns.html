@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Campaigns | HopeConnect</title>
+
+    <link rel="stylesheet" href="CSS/style.css">
+
+    <style>
+
+        /* ================= CAMPAIGNS PAGE ================= */
+
+        .campaigns-page {
+            padding: 90px 7% 100px;
+            min-height: 75vh;
+        }
+
+        .campaigns-header {
+            max-width: 850px;
+            margin-bottom: 70px;
+        }
+
+        .campaigns-header .section-label {
+            margin-bottom: 20px;
+        }
+
+        .campaigns-header h1 {
+            font-family: "Playfair Display", serif;
+            font-size: clamp(55px, 8vw, 100px);
+            line-height: 0.95;
+            color: #2d2020;
+            margin: 0 0 30px;
+        }
+
+        .campaigns-header h1 span {
+            color: #721c2a;
+        }
+
+        .campaigns-header p {
+            max-width: 700px;
+            font-size: 19px;
+            line-height: 1.8;
+            color: #756966;
+        }
+
+        /* ================= CAMPAIGN GRID ================= */
+
+        .all-campaigns {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .campaign-card-page {
+            background: #fffaf5;
+            border: 1px solid #e4d8cf;
+            padding: 35px;
+            min-height: 430px;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease,
+                        box-shadow 0.3s ease;
+        }
+
+        .campaign-card-page:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 18px 40px rgba(45, 32, 32, 0.10);
+        }
+
+        .campaign-category {
+            color: #8f1d2c;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            margin-bottom: 25px;
+        }
+
+        .campaign-card-page h2 {
+            font-family: "Playfair Display", serif;
+            font-size: 32px;
+            line-height: 1.1;
+            color: #2d2020;
+            margin: 0 0 18px;
+        }
+
+        .campaign-card-page p {
+            color: #756966;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+        /* ================= PROGRESS ================= */
+
+        .campaign-stats {
+            margin-top: auto;
+        }
+
+        .campaign-progress-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+            margin-bottom: 10px;
+            color: #4c3c38;
+        }
+
+        .campaign-progress-track {
+            height: 7px;
+            background: #eadfd7;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+
+        .campaign-progress-fill {
+            height: 100%;
+            background: #8f1d2c;
+            transition: width 0.5s ease;
+        }
+
+        .campaign-goal {
+            font-size: 13px;
+            color: #8a7b75;
+        }
+
+        /* ================= DONATE BUTTON ================= */
+
+        .donate-button {
+            margin-top: 25px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            background: #721c2a;
+            color: #ffffff;
+            padding: 14px 20px;
+            font-size: 14px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s ease,
+                        transform 0.3s ease;
+        }
+
+        .donate-button:hover {
+            background: #54131f;
+            transform: translateY(-2px);
+        }
+
+        /* ================= EMPTY STATE ================= */
+
+        .empty-campaigns {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 80px 20px;
+            color: #756966;
+        }
+
+        .empty-campaigns h2 {
+            font-family: "Playfair Display", serif;
+            color: #2d2020;
+            font-size: 38px;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 1000px) {
+
+            .all-campaigns {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+
+        @media (max-width: 650px) {
+
+            .campaigns-page {
+                padding: 60px 6%;
+            }
+
+            .all-campaigns {
+                grid-template-columns: 1fr;
+            }
+
+            .campaign-card-page {
+                min-height: auto;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="navbar">
+
+        <a href="index.html" class="logo">
+            HopeConnect
+        </a>
+
+        <nav>
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="about.html">
+                About
+            </a>
+
+            <a href="campaigns.html">
+                Campaigns
+            </a>
+
+            <a href="login.html">
+                Login
+            </a>
+
+            <a href="signup.html" class="nav-button">
+                Sign Up
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- ================= CAMPAIGNS ================= -->
+
+    <main>
+
+        <section class="campaigns-page">
+
+
+            <!-- HEADER -->
+
+            <div class="campaigns-header">
+
+                <div class="section-label">
+                    EXPLORE OUR CAUSES
+                </div>
+
+                <h1>
+                    Causes worth<br>
+                    <span>showing up for.</span>
+                </h1>
+
+                <p>
+                    Every campaign represents a real opportunity
+                    to make a difference. Explore the causes below
+                    and choose where you would like your kindness
+                    to create an impact.
+                </p>
+
+            </div>
+
+
+            <!-- CAMPAIGNS GRID -->
+
+            <div class="all-campaigns" id="campaignContainer">
+
+                <!-- JavaScript will add campaigns here -->
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <div class="footer-logo">
+
+            HopeConnect
+
+            <span>
+                ♥
+            </span>
+
+        </div>
+
+        <p>
+            Small kindness. Meaningful change.
+        </p>
+
+        <div class="footer-bottom">
+            © 2026 HopeConnect · Online Donation Platform
+        </div>
+
+    </footer>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+        /* ==========================================
+           GET CAMPAIGNS FROM LOCAL STORAGE
+        ========================================== */
+
+        let campaigns =
+            JSON.parse(localStorage.getItem("campaigns"));
+
+
+        /* ==========================================
+           DEFAULT CAMPAIGNS
+        ========================================== */
+
+        if (!campaigns) {
+
+            campaigns = [
+
+                {
+                    id: 1,
+                    title: "Education for every child.",
+                    category: "EDUCATION",
+                    description:
+                        "Help provide school supplies, learning materials and educational opportunities for children.",
+                    goal: 50000
+                },
+
+                {
+                    id: 2,
+                    title: "A meal should never be a luxury.",
+                    category: "FOOD",
+                    description:
+                        "Support food distribution programs helping families facing difficult circumstances.",
+                    goal: 30000
+                },
+
+                {
+                    id: 3,
+                    title: "Healthcare when it matters.",
+                    category: "HEALTHCARE",
+                    description:
+                        "Help people access essential medical care and support when they need it most.",
+                    goal: 100000
+                },
+
+                {
+                    id: 4,
+                    title: "Empower women. Build stronger futures.",
+                    category: "WOMEN EMPOWERMENT",
+                    description:
+                        "Support skill development, education and opportunities that help women build independent futures.",
+                    goal: 75000
+                },
+
+                {
+                    id: 5,
+                    title: "Help families after disaster.",
+                    category: "DISASTER RELIEF",
+                    description:
+                        "Provide essential food, shelter and basic supplies to families affected by natural disasters.",
+                    goal: 80000
+                },
+
+                {
+                    id: 6,
+                    title: "Every animal deserves care.",
+                    category: "ANIMAL WELFARE",
+                    description:
+                        "Support food, medical care and shelter for animals in need of protection and care.",
+                    goal: 40000
+                }
+
+            ];
+
+            localStorage.setItem(
+                "campaigns",
+                JSON.stringify(campaigns)
+            );
+
+        }
+
+
+        /* ==========================================
+           GET DONATIONS
+        ========================================== */
+
+        const donations =
+            JSON.parse(localStorage.getItem("donations")) || [];
+
+
+        /* ==========================================
+           CAMPAIGN CONTAINER
+        ========================================== */
+
+        const container =
+            document.getElementById("campaignContainer");
+
+
+        /* ==========================================
+           SHOW CAMPAIGNS
+        ========================================== */
+
+        function displayCampaigns() {
+
+            container.innerHTML = "";
+
+
+            if (campaigns.length === 0) {
+
+                container.innerHTML = `
+
+                    <div class="empty-campaigns">
+
+                        <h2>
+                            No campaigns available.
+                        </h2>
+
+                        <p>
+                            Please check back later for new causes.
+                        </p>
+
+                    </div>
+
+                `;
+
+                return;
+
+            }
+
+
+            campaigns.forEach(function(campaign) {
+
+
+                /* Calculate raised amount */
+
+                let raised = 0;
+
+
+                donations.forEach(function(donation) {
+
+                    if (
+                        donation.campaign === campaign.title
+                    ) {
+
+                        raised += Number(donation.amount);
+
+                    }
+
+                });
+
+
+                /* Calculate percentage */
+
+                let percentage = 0;
+
+
+                if (campaign.goal > 0) {
+
+                    percentage =
+                        Math.round(
+                            (raised / campaign.goal) * 100
+                        );
+
+                }
+
+
+                if (percentage > 100) {
+                    percentage = 100;
+                }
+
+
+                /* Create card */
+
+                const card =
+                    document.createElement("article");
+
+                card.className =
+                    "campaign-card-page";
+
+
+                card.innerHTML = `
+
+                    <div class="campaign-category">
+                        ${campaign.category}
+                    </div>
+
+                    <h2>
+                        ${campaign.title}
+                    </h2>
+
+                    <p>
+                        ${campaign.description}
+                    </p>
+
+                    <div class="campaign-stats">
+
+                        <div class="campaign-progress-info">
+
+                            <span>
+                                ₹${raised.toLocaleString("en-IN")} raised
+                            </span>
+
+                            <span>
+                                ${percentage}%
+                            </span>
+
+                        </div>
+
+
+                        <div class="campaign-progress-track">
+
+                            <div
+                                class="campaign-progress-fill"
+                                style="width: ${percentage}%">
+                            </div>
+
+                        </div>
+
+
+                        <div class="campaign-goal">
+
+                            Goal:
+                            ₹${Number(campaign.goal).toLocaleString("en-IN")}
+
+                        </div>
+
+
+                        <button
+                            class="donate-button"
+                            onclick="openDonation(${campaign.id})">
+
+                            Donate Now →
+
+                        </button>
+
+                    </div>
+
+                `;
+
+
+                container.appendChild(card);
+
+            });
+
+        }
+
+
+        /* ==========================================
+           OPEN DONATION PAGE
+        ========================================== */
+
+        function openDonation(campaignId) {
+
+            const campaign =
+                campaigns.find(function(item) {
+
+                    return item.id === campaignId;
+
+                });
+
+
+            if (!campaign) {
+                return;
+            }
+
+
+            localStorage.setItem(
+                "selectedCampaign",
+                campaign.title
+            );
+
+
+            window.location.href =
+                "donate.html";
+
+        }
+
+
+        /* ==========================================
+           INITIAL DISPLAY
+        ========================================== */
+
+        displayCampaigns();
+
+    </script>
+
+
+    <!-- CURSOR HEART -->
+
+    <script src="js/cursor.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login | HopeConnect</title>
+
+    <link rel="stylesheet" href="CSS/style.css">
+
+    <style>
+
+        .login-page {
+            min-height: calc(100vh - 80px);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 70px 20px;
+
+            background: #eee5df;
+        }
+
+        .login-box {
+            width: 100%;
+            max-width: 450px;
+
+            background: #f9f5f0;
+
+            padding: 50px;
+
+            border: 1px solid #dfd1c9;
+
+            box-shadow: 0 25px 60px rgba(56, 39, 34, 0.10);
+        }
+
+        .login-box h1 {
+            font-family: "Playfair Display", serif;
+
+            font-size: 48px;
+
+            line-height: 1;
+
+            color: #3b2528;
+
+            margin-bottom: 12px;
+        }
+
+        .login-subtitle {
+            color: #756a65;
+
+            font-size: 14px;
+
+            margin-bottom: 35px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            color: #554742;
+
+            margin-bottom: 8px;
+        }
+
+        .form-group input {
+            width: 100%;
+
+            padding: 14px 15px;
+
+            border: 1px solid #d5c7c0;
+
+            background: #fffaf5;
+
+            color: #332522;
+
+            font-family: "DM Sans", sans-serif;
+
+            font-size: 14px;
+
+            outline: none;
+
+            transition: 0.25s ease;
+        }
+
+        .form-group input:focus {
+            border-color: #a51c30;
+
+            box-shadow: 0 0 0 3px rgba(165, 28, 48, 0.08);
+        }
+
+        .login-button {
+            width: 100%;
+
+            border: none;
+
+            padding: 15px;
+
+            margin-top: 8px;
+
+            background: #5b1824;
+
+            color: white;
+
+            font-family: "DM Sans", sans-serif;
+
+            font-size: 14px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition: all 0.25s ease;
+        }
+
+        .login-button:hover {
+            background: #741e2d;
+
+            transform: translateY(-2px);
+        }
+
+        .signup-text {
+            text-align: center;
+
+            margin-top: 25px;
+
+            font-size: 13px;
+
+            color: #756a65;
+        }
+
+        .signup-text a {
+            color: #a51c30;
+
+            font-weight: 700;
+        }
+
+        .signup-text a:hover {
+            text-decoration: underline;
+        }
+
+        .admin-note {
+            margin-top: 25px;
+
+            padding: 14px;
+
+            background: #eee2dc;
+
+            border-left: 3px solid #a51c30;
+
+            font-size: 11px;
+
+            line-height: 1.6;
+
+            color: #6d625d;
+        }
+
+        @media (max-width: 550px) {
+
+            .login-box {
+                padding: 35px 25px;
+            }
+
+            .login-box h1 {
+                font-size: 40px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- NAVBAR -->
+
+    <header class="navbar">
+
+        <a href="index.html" class="logo">
+            HopeConnect
+        </a>
+
+        <nav>
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="index.html#about">
+                About
+            </a>
+
+            <a href="campaigns.html">
+                Campaigns
+            </a>
+
+            <a href="signup.html">
+                Sign Up
+            </a>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- LOGIN PAGE -->
+
+    <main class="login-page">
+
+        <div class="login-box">
+
+            <div class="section-label">
+                WELCOME BACK
+            </div>
+
+            <h1>
+                Login.
+            </h1>
+
+            <p class="login-subtitle">
+                Sign in to continue your journey
+                with HopeConnect.
+            </p>
+
+
+
+            <!-- LOGIN FORM -->
+
+            <form id="loginForm">
+
+
+                <div class="form-group">
+
+                    <label for="email">
+                        EMAIL ADDRESS
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Enter your email"
+                        required
+                    >
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label for="password">
+                        PASSWORD
+                    </label>
+
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Enter your password"
+                        required
+                    >
+
+                </div>
+
+
+
+                <button
+                    type="submit"
+                    class="login-button"
+                >
+                    Login
+                </button>
+
+            </form>
+
+
+
+            <p class="signup-text">
+
+                Don't have an account?
+
+                <a href="signup.html">
+                    Create one
+                </a>
+
+            </p>
+
+
+
+            <!-- ADMIN INFORMATION -->
+
+            <div class="admin-note">
+
+                <strong>Admin access:</strong>
+
+                Use the administrator credentials
+                provided for the project demonstration.
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+
+    <!-- LOGIN + LOCAL STORAGE -->
+
+    <script>
+
+        document
+            .getElementById("loginForm")
+            .addEventListener("submit", function(event) {
+
+                event.preventDefault();
+
+
+                const email =
+                    document.getElementById("email")
+                    .value
+                    .trim();
+
+                const password =
+                    document.getElementById("password")
+                    .value;
+
+
+
+                /* =========================
+                   ADMIN LOGIN
+                ========================= */
+
+                if (
+                    email === "admin@gmail.com" &&
+                    password === "admin123"
+                ) {
+
+                    localStorage.setItem(
+                        "currentUser",
+                        JSON.stringify({
+                            name: "Administrator",
+                            email: email,
+                            role: "admin"
+                        })
+                    );
+
+                    alert("Admin login successful!");
+
+                    window.location.href =
+                        "admin-dashboard.html";
+
+                    return;
+                }
+
+
+
+                /* =========================
+                   USER LOGIN
+                ========================= */
+
+                const users =
+                    JSON.parse(
+                        localStorage.getItem("users")
+                    ) || [];
+
+
+
+                const user =
+                    users.find(function(user) {
+
+                        return (
+                            user.email === email &&
+                            user.password === password
+                        );
+
+                    });
+
+
+
+                if (!user) {
+
+                    alert(
+                        "Invalid email or password!"
+                    );
+
+                    return;
+                }
+
+
+
+                /* =========================
+                   SAVE CURRENT USER
+                ========================= */
+
+                localStorage.setItem(
+                    "currentUser",
+                    JSON.stringify({
+                        name: user.name,
+                        email: user.email,
+                        role: "user"
+                    })
+                );
+
+
+
+                alert(
+                    "Login successful! Welcome " +
+                    user.name
+                );
+
+
+
+                /* =========================
+                   USER DASHBOARD
+                ========================= */
+
+                window.location.href =
+                    "user-dashboard.html";
+
+            });
+
+    </script>
+
+
+
+    <!-- CURSOR HEART -->
+
+    <script src="js/cursor.js"></script>
+
+
+</body>
+
+</html>

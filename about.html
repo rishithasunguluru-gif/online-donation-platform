@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>About | HopeConnect</title>
+
+    <link rel="stylesheet" href="CSS/style.css">
+
+    <style>
+
+        .about-page {
+            min-height: 75vh;
+            padding: 100px 7%;
+            display: flex;
+            align-items: center;
+        }
+
+        .about-container {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .about-label {
+            color: #8f1d2c;
+            font-size: 12px;
+            letter-spacing: 4px;
+            font-weight: 700;
+            margin-bottom: 25px;
+        }
+
+        .about-page h1 {
+            font-family: "Playfair Display", serif;
+            font-size: clamp(55px, 8vw, 105px);
+            line-height: 0.95;
+            color: #2d2020;
+            margin: 0 0 35px;
+        }
+
+        .about-page h1 span {
+            color: #721c2a;
+        }
+
+        .about-intro {
+            max-width: 750px;
+            font-size: 20px;
+            line-height: 1.8;
+            color: #665957;
+            margin-bottom: 60px;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .about-box {
+            background: #fffaf5;
+            padding: 35px;
+            border: 1px solid #e5d9d0;
+        }
+
+        .about-box span {
+            font-family: "Playfair Display", serif;
+            font-size: 42px;
+            color: #8f1d2c;
+        }
+
+        .about-box h3 {
+            margin: 15px 0 12px;
+            font-family: "Playfair Display", serif;
+            font-size: 25px;
+            color: #2d2020;
+        }
+
+        .about-box p {
+            color: #756966;
+            line-height: 1.7;
+        }
+
+        .mission {
+            margin-top: 70px;
+            background: #2d2020;
+            color: #f6f1ea;
+            padding: 55px;
+        }
+
+        .mission h2 {
+            font-family: "Playfair Display", serif;
+            font-size: 45px;
+            margin: 0 0 20px;
+        }
+
+        .mission p {
+            max-width: 750px;
+            line-height: 1.8;
+            color: #ded3cd;
+        }
+
+        @media (max-width: 800px) {
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-page {
+                padding: 70px 6%;
+            }
+
+            .mission {
+                padding: 35px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="navbar">
+
+        <a href="index.html" class="logo">
+            HopeConnect
+        </a>
+
+        <nav>
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="about.html">
+                About
+            </a>
+
+            <a href="campaigns.html">
+                Campaigns
+            </a>
+
+            <a href="login.html">
+                Login
+            </a>
+
+            <a href="signup.html" class="nav-button">
+                Sign Up
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- ================= ABOUT PAGE ================= -->
+
+    <main>
+
+        <section class="about-page">
+
+            <div class="about-container">
+
+                <div class="about-label">
+                    ABOUT HOPECONNECT
+                </div>
+
+                <h1>
+                    Kindness can<br>
+                    <span>change everything.</span>
+                </h1>
+
+                <p class="about-intro">
+                    HopeConnect is an online donation platform designed
+                    to connect people who want to help with causes that
+                    genuinely need support.
+                </p>
+
+
+                <div class="about-grid">
+
+
+                    <div class="about-box">
+
+                        <span>01</span>
+
+                        <h3>
+                            Meaningful Giving
+                        </h3>
+
+                        <p>
+                            Discover causes across education, food,
+                            healthcare, disaster relief and animal welfare.
+                        </p>
+
+                    </div>
+
+
+                    <div class="about-box">
+
+                        <span>02</span>
+
+                        <h3>
+                            Simple Platform
+                        </h3>
+
+                        <p>
+                            Our platform makes it easy for users to
+                            explore campaigns and contribute through
+                            a simple donation process.
+                        </p>
+
+                    </div>
+
+
+                    <div class="about-box">
+
+                        <span>03</span>
+
+                        <h3>
+                            Real Impact
+                        </h3>
+
+                        <p>
+                            Every contribution represents an opportunity
+                            to support someone and create positive change.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="mission">
+
+                    <h2>
+                        Our mission.
+                    </h2>
+
+                    <p>
+                        We believe that giving should be simple,
+                        accessible and meaningful. HopeConnect brings
+                        donors and causes together through one
+                        convenient digital platform, making it easier
+                        for people to turn kindness into action.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <div class="footer-logo">
+
+            HopeConnect
+
+            <span>
+                ♥
+            </span>
+
+        </div>
+
+        <p>
+            Small kindness. Meaningful change.
+        </p>
+
+        <div class="footer-bottom">
+            © 2026 HopeConnect · Online Donation Platform
+        </div>
+
+    </footer>
+
+
+    <!-- CURSOR HEART -->
+
+    <script src="js/cursor.js"></script>
+
+</body>
+
+</html>

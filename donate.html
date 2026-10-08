@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Make a Donation | HopeConnect</title>
+
+    <link rel="stylesheet" href="CSS/style.css">
+
+    <style>
+
+        .donate-page {
+            min-height: calc(100vh - 80px);
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 70px 20px;
+
+            background: #eee5df;
+        }
+
+
+        .donate-box {
+            width: 100%;
+            max-width: 560px;
+
+            background: #f9f5f0;
+
+            padding: 50px;
+
+            border: 1px solid #dfd1c9;
+
+            box-shadow:
+                0 25px 60px
+                rgba(56, 39, 34, 0.10);
+        }
+
+
+        .donate-box h1 {
+            font-family: "Playfair Display", serif;
+
+            font-size: 48px;
+
+            line-height: 1;
+
+            color: #3b2528;
+
+            margin-bottom: 12px;
+        }
+
+
+        .donate-subtitle {
+            color: #756a65;
+
+            font-size: 14px;
+
+            line-height: 1.7;
+
+            margin-bottom: 35px;
+        }
+
+
+        /* SELECTED CAMPAIGN */
+
+        .selected-campaign {
+            padding: 20px;
+
+            background: #eee2dc;
+
+            border-left: 4px solid #a51c30;
+
+            margin-bottom: 30px;
+        }
+
+
+        .selected-campaign span {
+            display: block;
+
+            font-size: 10px;
+
+            font-weight: 700;
+
+            letter-spacing: 2px;
+
+            color: #8a7c76;
+
+            margin-bottom: 8px;
+        }
+
+
+        .selected-campaign strong {
+            font-family: "Playfair Display", serif;
+
+            font-size: 22px;
+
+            color: #5b1824;
+        }
+
+
+        /* FORM */
+
+        .form-group {
+            margin-bottom: 22px;
+        }
+
+
+        .form-group label {
+            display: block;
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            color: #554742;
+
+            margin-bottom: 8px;
+        }
+
+
+        .form-group input {
+            width: 100%;
+
+            padding: 15px;
+
+            border: 1px solid #d5c7c0;
+
+            background: #fffaf5;
+
+            color: #332522;
+
+            font-family: "DM Sans", sans-serif;
+
+            font-size: 15px;
+
+            outline: none;
+
+            transition: 0.25s ease;
+        }
+
+
+        .form-group input:focus {
+            border-color: #a51c30;
+
+            box-shadow:
+                0 0 0 3px
+                rgba(165, 28, 48, 0.08);
+        }
+
+
+        .amount-options {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 10px;
+
+            margin-bottom: 15px;
+        }
+
+
+        .amount-button {
+            padding: 12px;
+
+            border: 1px solid #d5c7c0;
+
+            background: #fffaf5;
+
+            color: #5b1824;
+
+            font-family: "DM Sans", sans-serif;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition: 0.2s ease;
+        }
+
+
+        .amount-button:hover {
+            background: #eee2dc;
+        }
+
+
+        .donate-submit {
+            width: 100%;
+
+            border: none;
+
+            padding: 16px;
+
+            margin-top: 10px;
+
+            background: #5b1824;
+
+            color: white;
+
+            font-family: "DM Sans", sans-serif;
+
+            font-size: 14px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition: 0.25s ease;
+        }
+
+
+        .donate-submit:hover {
+            background: #741e2d;
+
+            transform: translateY(-2px);
+        }
+
+
+        .login-warning {
+            padding: 18px;
+
+            background: #f3ddd9;
+
+            border-left: 3px solid #a51c30;
+
+            color: #6d625d;
+
+            font-size: 13px;
+
+            line-height: 1.6;
+
+            margin-bottom: 25px;
+        }
+
+
+        .back-link {
+            display: block;
+
+            text-align: center;
+
+            margin-top: 22px;
+
+            color: #756a65;
+
+            font-size: 13px;
+        }
+
+
+        .back-link:hover {
+            color: #a51c30;
+        }
+
+
+        @media (max-width: 550px) {
+
+            .donate-box {
+                padding: 35px 25px;
+            }
+
+            .donate-box h1 {
+                font-size: 40px;
+            }
+
+            .amount-options {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- NAVBAR -->
+
+    <header class="navbar">
+
+        <a href="index.html" class="logo">
+            HopeConnect
+        </a>
+
+        <nav>
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="campaigns.html">
+                Campaigns
+            </a>
+
+            <a href="user-dashboard.html">
+                Dashboard
+            </a>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- DONATION PAGE -->
+
+    <main class="donate-page">
+
+
+        <div class="donate-box">
+
+
+            <div class="section-label">
+                MAKE AN IMPACT
+            </div>
+
+
+            <h1>
+                Give with purpose.
+            </h1>
+
+
+            <p class="donate-subtitle">
+
+                Choose your contribution and help support
+                a cause that matters.
+
+            </p>
+
+
+
+            <!-- SELECTED CAMPAIGN -->
+
+            <div class="selected-campaign">
+
+                <span>
+                    YOU ARE SUPPORTING
+                </span>
+
+                <strong id="campaignName">
+                    Campaign
+                </strong>
+
+            </div>
+
+
+
+            <!-- LOGIN WARNING -->
+
+            <div
+                class="login-warning"
+                id="loginWarning"
+                style="display:none;"
+            >
+
+                Please login as a user before making
+                a donation.
+
+            </div>
+
+
+
+            <!-- DONATION FORM -->
+
+            <form id="donationForm">
+
+
+                <!-- AMOUNT OPTIONS -->
+
+                <div class="form-group">
+
+                    <label>
+                        CHOOSE AMOUNT
+                    </label>
+
+
+                    <div class="amount-options">
+
+                        <button
+                            type="button"
+                            class="amount-button"
+                            onclick="setAmount(100)"
+                        >
+                            ₹100
+                        </button>
+
+                        <button
+                            type="button"
+                            class="amount-button"
+                            onclick="setAmount(500)"
+                        >
+                            ₹500
+                        </button>
+
+                        <button
+                            type="button"
+                            class="amount-button"
+                            onclick="setAmount(1000)"
+                        >
+                            ₹1,000
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- CUSTOM AMOUNT -->
+
+                <div class="form-group">
+
+                    <label for="amount">
+                        DONATION AMOUNT
+                    </label>
+
+                    <input
+                        type="number"
+                        id="amount"
+                        placeholder="Enter amount"
+                        min="1"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- SUBMIT -->
+
+                <button
+                    type="submit"
+                    class="donate-submit"
+                >
+                    Confirm Donation →
+                </button>
+
+            </form>
+
+
+
+            <a
+                href="campaigns.html"
+                class="back-link"
+            >
+                ← Back to campaigns
+            </a>
+
+
+        </div>
+
+    </main>
+
+
+
+    <!-- DONATION JAVASCRIPT -->
+
+    <script>
+
+        /* =========================
+           CHECK CURRENT USER
+        ========================= */
+
+        const currentUser =
+            JSON.parse(
+                localStorage.getItem("currentUser")
+            );
+
+
+        /* =========================
+           GET SELECTED CAMPAIGN
+        ========================= */
+
+        const selectedCampaign =
+            localStorage.getItem(
+                "selectedCampaign"
+            );
+
+
+        document.getElementById(
+            "campaignName"
+        ).textContent =
+            selectedCampaign ||
+            "Selected Campaign";
+
+
+
+        /* =========================
+           CHECK USER LOGIN
+        ========================= */
+
+        if (
+            !currentUser ||
+            currentUser.role !== "user"
+        ) {
+
+            document.getElementById(
+                "loginWarning"
+            ).style.display = "block";
+
+            document.getElementById(
+                "donationForm"
+            ).style.display = "none";
+
+        }
+
+
+
+        /* =========================
+           SET QUICK AMOUNT
+        ========================= */
+
+        function setAmount(amount) {
+
+            document.getElementById(
+                "amount"
+            ).value = amount;
+
+        }
+
+
+
+        /* =========================
+           DONATION SUBMIT
+        ========================= */
+
+        document
+            .getElementById("donationForm")
+            .addEventListener(
+                "submit",
+                function(event) {
+
+                    event.preventDefault();
+
+
+                    /* Check login again */
+
+                    if (
+                        !currentUser ||
+                        currentUser.role !== "user"
+                    ) {
+
+                        alert(
+                            "Please login before donating."
+                        );
+
+                        window.location.href =
+                            "login.html";
+
+                        return;
+
+                    }
+
+
+                    /* Get amount */
+
+                    const amount =
+                        Number(
+                            document.getElementById(
+                                "amount"
+                            ).value
+                        );
+
+
+                    /* Validate amount */
+
+                    if (
+                        !amount ||
+                        amount <= 0
+                    ) {
+
+                        alert(
+                            "Please enter a valid donation amount."
+                        );
+
+                        return;
+
+                    }
+
+
+                    /* Get existing donations */
+
+                    let donations =
+                        JSON.parse(
+                            localStorage.getItem(
+                                "donations"
+                            )
+                        ) || [];
+
+
+                    /* Create donation */
+
+                    const newDonation = {
+
+                        id:
+                            Date.now(),
+
+                        email:
+                            currentUser.email,
+
+                        name:
+                            currentUser.name,
+
+                        campaign:
+                            selectedCampaign,
+
+                        amount:
+                            amount,
+
+                        date:
+                            new Date()
+                                .toLocaleDateString(
+                                    "en-IN"
+                                )
+
+                    };
+
+
+                    /* Add donation */
+
+                    donations.push(
+                        newDonation
+                    );
+
+
+                    /* Save donations */
+
+                    localStorage.setItem(
+                        "donations",
+                        JSON.stringify(
+                            donations
+                        )
+                    );
+
+
+                    /* Success */
+
+                    alert(
+                        "Donation successful! Thank you for your kindness ❤️"
+                    );
+
+
+                    /* Remove selected campaign */
+
+                    localStorage.removeItem(
+                        "selectedCampaign"
+                    );
+
+
+                    /* Go dashboard */
+
+                    window.location.href =
+                        "user-dashboard.html";
+
+                }
+            );
+
+    </script>
+
+
+
+    <!-- CURSOR HEART -->
+
+    <script src="js/cursor.js"></script>
+
+
+</body>
+
+</html>
